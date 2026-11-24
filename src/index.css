@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-body: 'Montserrat', sans-serif;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --color-orange: #F47B20;
+  --color-teal: #2BB5A8;
+  --color-magenta: #C41E5A;
+  --color-graphite: #151517;
+  --color-deep: #000000;
+  --color-surface: #19191c;
+  --color-line: #3A3A3C;
+  --color-navy: #0F1A4A;
+  --color-peach: #FBC9A8;
+  --breakpoint-md: 50rem;
+}
