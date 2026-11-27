@@ -1,0 +1,10 @@
+{
+  "description": "Explora eventos, investigaciones, proyectos y recursos de SIGGRAPH USBBOG, y descubre cómo participar en su comunidad creativa y académica.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

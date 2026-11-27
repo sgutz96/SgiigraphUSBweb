@@ -17,6 +17,8 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
+      // three.js (colibrí 3D) va en su propio chunk diferido; es esperado que pese ~600 kB.
+      chunkSizeWarningLimit: 700,
     },
     plugins: [
 react(),

@@ -1,17 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 
+/*
+ * SIGGRAPH USBBOG — Design tokens
+ * ------------------------------------------------------------
+ * Todo color, radio o tipografía del sitio sale de aquí.
+ * Regla: en los componentes NO se escriben hex sueltos (#F47B20…);
+ * se usan las utilidades que Tailwind genera de estos tokens
+ * (bg-orange, text-muted, rounded-card, font-display…).
+ * La página "Sistema" (#/sistema) muestra todos los tokens en vivo.
+ */
 @theme {
-  --font-body: 'Montserrat', sans-serif;
-  --font-display: 'Barlow Condensed', sans-serif;
+  /* Tipografía — fuentes servidas localmente con @fontsource (ver main.tsx) */
+  --font-body: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Marca: los colores del colibrí */
   --color-orange: #F47B20;
+  --color-orange-hover: #FF9A4D;
   --color-teal: #2BB5A8;
+  --color-teal-soft: #72D6C7;
   --color-magenta: #C41E5A;
-  --color-graphite: #151517;
-  --color-deep: #000000;
-  --color-surface: #19191c;
-  --color-line: #3A3A3C;
-  --color-navy: #0F1A4A;
+  --color-pink: #ED77A3;
   --color-peach: #FBC9A8;
+  --color-navy: #0F1A4A;
+
+  /* Neutros oscuros (de más profundo a más elevado) */
+  --color-ink-950: #0C0C0E; /* footer */
+  --color-ink-900: #111113; /* bandas alternas */
+  --color-ink-850: #151517; /* fondo base */
+  --color-ink-800: #1B1B1E; /* superficie (cards) */
+  --color-ink-700: #232326; /* superficie elevada / hover */
+  --color-line: #3A3A3C;
+  --color-line-soft: rgb(255 255 255 / 0.1);
+
+  /* Texto */
+  --color-fg: #FFFFFF;
+  --color-muted: #C4C8CF; /* 10.9:1 sobre ink-850 */
+  --color-subtle: #9A9EA6; /* 6.8:1 sobre ink-850: notas y metadatos */
+
+  /* Secciones claras (ritmo claro/oscuro) */
+  --color-paper: #F5F1EA;
+  --color-paper-raised: #FFFFFF;
+  --color-paper-line: #DDD6CA;
+  --color-paper-muted: #4A4A50; /* 7.8:1 sobre paper */
+  --color-orange-ink: #B24E00; /* naranja legible sobre paper: 4.7:1 */
+  --color-teal-ink: #0E7268;   /* teal legible sobre paper: 5.1:1 */
+
+  /* Radios: amables, sin perder lo técnico */
+  --radius-control: 999px; /* botones, chips */
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+  --radius-tag: 0.375rem;
+
+  /* Movimiento */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-marquee: marquee 36s linear infinite;
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+
   --breakpoint-md: 50rem;
+}
+
+/* Etiqueta mono en mayúsculas que encabeza secciones y tarjetas */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Contenedor estándar del sitio */
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1320px;
+  padding-inline: 1.5rem;
+  @media (width >= 64rem) {
+    padding-inline: 3rem;
+  }
+}
+
+/* Anillo de foco único para todo el sitio */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+  }
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--color-ink-850);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-magenta);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+  }
+  dialog::backdrop {
+    background: rgb(12 12 14 / 0.75);
+    backdrop-filter: blur(4px);
+  }
 }
